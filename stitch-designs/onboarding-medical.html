@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediPal | Medical History Onboarding</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#eceef0",
+              "on-surface": "#191c1e",
+              "surface-variant": "#e0e3e5",
+              "on-tertiary-fixed-variant": "#005320",
+              "on-secondary-fixed": "#00174b",
+              "tertiary-fixed": "#7ffc97",
+              "on-primary-fixed": "#001e30",
+              "on-secondary-container": "#fefcff",
+              "background": "#f7f9fb",
+              "on-primary-fixed-variant": "#214a66",
+              "surface-container-low": "#f2f4f6",
+              "on-error-container": "#93000a",
+              "error": "#ba1a1a",
+              "primary-fixed": "#cae6ff",
+              "primary-container": "#00334e",
+              "primary-fixed-dim": "#a4cbec",
+              "outline": "#72787e",
+              "outline-variant": "#c2c7ce",
+              "on-tertiary-fixed": "#002109",
+              "tertiary-container": "#003814",
+              "surface-bright": "#f7f9fb",
+              "on-secondary-fixed-variant": "#003ea8",
+              "on-primary-container": "#759cbb",
+              "surface": "#f7f9fb",
+              "secondary-fixed-dim": "#b4c5ff",
+              "surface-container-highest": "#e0e3e5",
+              "secondary": "#0051d5",
+              "on-surface-variant": "#42474d",
+              "inverse-primary": "#a4cbec",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#62df7d",
+              "surface-tint": "#3b627f",
+              "surface-container-lowest": "#ffffff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-container": "#316bf3",
+              "secondary-fixed": "#dbe1ff",
+              "surface-dim": "#d8dadc",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#28ad53",
+              "tertiary": "#002008",
+              "surface-container-high": "#e6e8ea",
+              "on-primary": "#ffffff",
+              "on-background": "#191c1e",
+              "primary": "#001d2f",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2d3133"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        h1, h2, h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased">
+<!-- Top Navigation (Shell Invisible for focused onboarding but maintaining brand presence) -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 max-w-full bg-slate-50/80 backdrop-blur-md z-50">
+<div class="font-['Manrope'] font-extrabold text-2xl text-cyan-900">MediPal</div>
+<div class="flex items-center gap-4 text-slate-500 font-medium text-sm">
+<span>Step 2 of 3</span>
+<div class="w-24 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-cyan-700"></div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-6 max-w-4xl mx-auto">
+<!-- Hero Header -->
+<section class="mb-12">
+<h1 class="text-[3.5rem] font-extrabold leading-tight text-primary tracking-tight mb-4">
+                Clinical Narrative
+            </h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">
+                Your medical history allows <span class="text-cyan-900 font-semibold">MediPal</span> to provide context-aware insights. Please detail your journey with precision.
+            </p>
+</section>
+<!-- Form Canvas (Spacing 12 as requested) -->
+<div class="space-y-12">
+<!-- Allergies Section -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm transition-all hover:shadow-md">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="md:w-1/3">
+<h2 class="text-xl font-bold text-primary mb-2">Allergies</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed">Include reactions to medications, foods, and environmental factors.</p>
+</div>
+<div class="md:w-2/3 space-y-4">
+<div class="relative">
+<label class="block text-xs font-semibold text-on-surface-variant mb-1 uppercase tracking-wider">Known Allergies</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary min-h-[120px] placeholder:text-slate-400" placeholder="e.g. Penicillin, Latex, Peanuts..."></textarea>
+</div>
+<div class="flex items-center gap-3 p-4 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-cyan-700">info</span>
+<p class="text-xs text-on-surface-variant">Mention the severity of reactions if possible (e.g., mild rash vs. anaphylaxis).</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Current Medications Section -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm transition-all hover:shadow-md">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="md:w-1/3">
+<h2 class="text-xl font-bold text-primary mb-2">Current Medications</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed">Prescriptions, over-the-counter drugs, and herbal supplements.</p>
+</div>
+<div class="md:w-2/3">
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2">
+<label class="block text-xs font-semibold text-on-surface-variant mb-1 uppercase tracking-wider">Medication Name</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary" placeholder="e.g. Lisinopril 10mg" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant mb-1 uppercase tracking-wider">Frequency</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary" placeholder="Once daily" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant mb-1 uppercase tracking-wider">Purpose</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary" placeholder="Blood pressure" type="text"/>
+</div>
+</div>
+<button class="flex items-center gap-2 text-secondary font-semibold text-sm py-2 px-1 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                                Add Another Medication
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Past Surgeries Section -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm transition-all hover:shadow-md">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="md:w-1/3">
+<h2 class="text-xl font-bold text-primary mb-2">Past Surgeries</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed">Surgical procedures and major hospitalizations.</p>
+</div>
+<div class="md:w-2/3 space-y-4">
+<div class="relative">
+<label class="block text-xs font-semibold text-on-surface-variant mb-1 uppercase tracking-wider">Procedure History</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary min-h-[100px] placeholder:text-slate-400" placeholder="List procedures and approximate years (e.g. Appendectomy, 2015)..."></textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Chronic Conditions Section -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm transition-all hover:shadow-md">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="md:w-1/3">
+<h2 class="text-xl font-bold text-primary mb-2">Chronic Conditions</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed">Ongoing health management such as Diabetes, Asthma, or Hypertension.</p>
+</div>
+<div class="md:w-2/3">
+<div class="grid grid-cols-2 gap-3">
+<!-- Toggle Pills -->
+<label class="flex items-center gap-3 p-4 rounded-xl bg-surface-container cursor-pointer transition-colors hover:bg-surface-variant">
+<input class="w-5 h-5 rounded text-secondary border-none bg-white" type="checkbox"/>
+<span class="text-sm font-medium">Hypertension</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-xl bg-surface-container cursor-pointer transition-colors hover:bg-surface-variant">
+<input class="w-5 h-5 rounded text-secondary border-none bg-white" type="checkbox"/>
+<span class="text-sm font-medium">Diabetes Type 2</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-xl bg-surface-container cursor-pointer transition-colors hover:bg-surface-variant">
+<input class="w-5 h-5 rounded text-secondary border-none bg-white" type="checkbox"/>
+<span class="text-sm font-medium">Asthma</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-xl bg-surface-container cursor-pointer transition-colors hover:bg-surface-variant">
+<input class="w-5 h-5 rounded text-secondary border-none bg-white" type="checkbox"/>
+<span class="text-sm font-medium">Cholesterol</span>
+</label>
+</div>
+<div class="mt-4">
+<input class="w-full bg-surface-container-highest border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary" placeholder="Other conditions..." type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="flex flex-col items-center pt-8">
+<button class="bg-[#004d6a] text-white px-12 py-5 rounded-full font-bold text-lg shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+                    Complete Profile
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+<p class="mt-6 text-slate-400 text-sm font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">lock</span>
+                    Your data is encrypted and HIPAA compliant
+                </p>
+</section>
+</div>
+</main>
+<!-- Footer / Disclaimer (Shared Component Logic) -->
+<footer class="w-full mt-auto py-12 px-8 bg-slate-50 dark:bg-slate-950 flex flex-col items-center text-center space-y-4 max-w-4xl mx-auto">
+<div class="font-['Manrope'] font-semibold text-slate-400">MediPal</div>
+<p class="font-['Inter'] text-xs leading-relaxed text-slate-500 max-w-2xl">
+            © 2024 MediPal. Medical Disclaimer: Information provided is for educational purposes and not a substitute for professional medical advice. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+        </p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-slate-900 text-xs transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-slate-900 text-xs transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-400 hover:text-slate-900 text-xs transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediPal - Report Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#eceef0",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005320",
+                        "on-secondary-fixed": "#00174b",
+                        "tertiary-fixed": "#7ffc97",
+                        "on-primary-fixed": "#001e30",
+                        "on-secondary-container": "#fefcff",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed-variant": "#214a66",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#cae6ff",
+                        "primary-container": "#00334e",
+                        "primary-fixed-dim": "#a4cbec",
+                        "outline": "#72787e",
+                        "outline-variant": "#c2c7ce",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-container": "#003814",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-primary-container": "#759cbb",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary": "#0051d5",
+                        "on-surface-variant": "#42474d",
+                        "inverse-primary": "#a4cbec",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#62df7d",
+                        "surface-tint": "#3b627f",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#316bf3",
+                        "secondary-fixed": "#dbe1ff",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#28ad53",
+                        "tertiary": "#002008",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "primary": "#001d2f",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3133"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex">
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-slate-100 dark:bg-slate-900 py-8 z-40">
+<div class="px-6 mb-8">
+<span class="font-['Manrope'] font-bold text-xl text-cyan-900 dark:text-cyan-50">MediPal</span>
+<p class="text-xs text-slate-500 font-semibold mt-1">Clinical Curator</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard_customize">dashboard_customize</span>
+<span class="font-semibold text-sm">Dashboard</span>
+</a>
+<a class="flex items-center bg-white dark:bg-slate-800 text-cyan-700 dark:text-cyan-300 rounded-l-full ml-4 pl-4 py-3 shadow-sm transition-all translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="history_edu">history_edu</span>
+<span class="font-semibold text-sm">History</span>
+</a>
+<a class="flex items-center text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="family_restroom">family_restroom</span>
+<span class="font-semibold text-sm">Family</span>
+</a>
+<a class="flex items-center text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="badge">badge</span>
+<span class="font-semibold text-sm">Passport</span>
+</a>
+<a class="flex items-center text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="help_outline">help_outline</span>
+<span class="font-semibold text-sm">Help</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white py-4 px-2 rounded-xl font-bold text-sm shadow-lg active:scale-95 duration-150">
+                Book Consultation
+            </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full md:w-[calc(100%-16rem)] flex justify-between items-center px-6 py-4 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md z-30">
+<div class="flex items-center gap-4">
+<span class="font-['Manrope'] font-extrabold text-2xl text-cyan-900 dark:text-cyan-50">Analysis</span>
+</div>
+<div class="flex items-center space-x-6">
+<nav class="hidden sm:flex space-x-4">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-cyan-600 transition-colors" href="#">English</a>
+<a class="text-cyan-700 dark:text-cyan-300 font-bold border-b-2 border-cyan-700 dark:border-cyan-300 pb-1 hover:text-cyan-600 transition-colors" href="#">हिन्दी</a>
+</nav>
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-slate-600" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-600" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<div class="pt-24 pb-12 px-6 max-w-6xl mx-auto w-full space-y-8">
+<!-- Urgent Banner -->
+<section class="bg-error-container text-on-error-container p-6 rounded-[1.5rem] flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="bg-error p-3 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<h2 class="text-2xl font-bold font-headline leading-tight">धैर्य रखें, कुछ रिपोर्ट सामान्य नहीं हैं</h2>
+<p class="text-sm font-medium opacity-90 font-body">Please stay calm. Some of your laboratory findings require medical attention.</p>
+</div>
+</div>
+<button class="bg-white/30 backdrop-blur-md border border-white/20 p-3 rounded-full hover:bg-white/40 transition-all">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</section>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Hemoglobin (Red/Urgent) -->
+<div class="bg-[#ffebee] dark:bg-red-950/20 p-8 rounded-[1.5rem] relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-2 h-full bg-error"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-error font-bold text-xs tracking-widest uppercase mb-1 block">CRITICAL</span>
+<h3 class="text-3xl font-bold text-on-surface">Hemoglobin</h3>
+</div>
+<button class="bg-white/80 p-4 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-error" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<div class="mb-8">
+<h4 class="text-2xl font-extrabold text-error mb-2 leading-tight">खून की कमी के संकेत हैं</h4>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed">Your levels are significantly below the healthy range for your age group.</p>
+</div>
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-xl flex items-end justify-between">
+<div>
+<p class="text-[0.65rem] text-slate-500 font-bold uppercase">Result</p>
+<p class="text-2xl font-extrabold font-headline">8.2 <span class="text-sm font-normal">g/dL</span></p>
+</div>
+<div class="text-right">
+<p class="text-[0.65rem] text-slate-500 font-bold uppercase">Normal</p>
+<p class="text-sm font-semibold">12.0 - 15.5</p>
+</div>
+</div>
+</div>
+<!-- Glucose (Yellow/Warning) -->
+<div class="bg-[#fff9c4] dark:bg-yellow-950/20 p-8 rounded-[1.5rem] relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-2 h-full bg-amber-500"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-amber-700 font-bold text-xs tracking-widest uppercase mb-1 block">MONITOR</span>
+<h3 class="text-3xl font-bold text-on-surface">Glucose</h3>
+</div>
+<button class="bg-white/80 p-4 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-amber-600" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<div class="mb-8">
+<h4 class="text-2xl font-extrabold text-amber-800 mb-2 leading-tight">चीनी का स्तर थोड़ा बढ़ा है</h4>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed">Fasting sugar is borderline. Diet control is highly recommended immediately.</p>
+</div>
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-xl flex items-end justify-between">
+<div>
+<p class="text-[0.65rem] text-slate-500 font-bold uppercase">Result</p>
+<p class="text-2xl font-extrabold font-headline">115 <span class="text-sm font-normal">mg/dL</span></p>
+</div>
+<div class="text-right">
+<p class="text-[0.65rem] text-slate-500 font-bold uppercase">Normal</p>
+<p class="text-sm font-semibold">70 - 100</p>
+</div>
+</div>
+</div>
+<!-- TSH (Green/Normal) -->
+<div class="bg-[#e8f5e9] dark:bg-green-950/20 p-8 rounded-[1.5rem] relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-2 h-full bg-on-tertiary-container"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-on-tertiary-container font-bold text-xs tracking-widest uppercase mb-1 block">NORMAL</span>
+<h3 class="text-3xl font-bold text-on-surface">TSH</h3>
+</div>
+<button class="bg-white/80 p-4 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<div class="mb-8">
+<h4 class="text-2xl font-extrabold text-on-tertiary-container mb-2 leading-tight">थायराइड बिल्कुल ठीक है</h4>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed">Thyroid stimulating hormone levels are within the optimal clinical range.</p>
+</div>
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-xl flex items-end justify-between">
+<div>
+<p class="text-[0.65rem] text-slate-500 font-bold uppercase">Result</p>
+<p class="text-2xl font-extrabold font-headline">2.4 <span class="text-sm font-normal">mIU/L</span></p>
+</div>
+<div class="text-right">
+<p class="text-[0.65rem] text-slate-500 font-bold uppercase">Normal</p>
+<p class="text-sm font-semibold">0.4 - 4.0</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Expert Sections -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Dietary Advice -->
+<section class="bg-surface-container-low p-8 rounded-[1.5rem]">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="restaurant">restaurant</span>
+<h3 class="text-xl font-bold font-headline">Expert Recommendations</h3>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl flex gap-4">
+<img class="w-20 h-20 rounded-lg object-cover flex-shrink-0" data-alt="vibrant fresh spinach, kale, and broccoli on a wooden rustic board with natural morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBANWI1wAwvfRka1uTD_xDyNw_R7XAXIe2MU_pdKxjzrviJWERZRPqK09F_76-6OV1aeIvpehYlFr66KJN5hi1ZyI1sFWi93yNvvHIWWBk2kPDbjtymRPsUa7JuoOw0IOzrkv0Hk7HNP2mjxcsn5BDLF36xm5K0Q1QBLfoOasB-sXg_HxTTg_NeghYnX6lJtAnHZm2HdYZ4TUkbSmyQi5RToA4F_b6H53e8S0n68mTiuiY__8bblLQXbia72FeAgxgs-yV5xeqfrO52"/>
+<div>
+<h4 class="font-bold text-lg mb-1">Increase Iron Intake</h4>
+<p class="text-sm text-on-surface-variant">पालक, मेथी, और हरी सब्जियां ज़्यादा खाएं। (Eat more spinach and greens)</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl flex gap-4">
+<img class="w-20 h-20 rounded-lg object-cover flex-shrink-0" data-alt="sliced apples, berries and healthy snacks arranged neatly on a modern ceramic plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzh7uGQCnTF_C2P-oMn35xcfQ-i849IC8aYkrg55Wj4Qu0pnA3PC4KsAUl1uK2WeVxfABuiv5fdhML9oIvCBW_M-zUsNbAfrP1znHhtlDpz87zw2UIAOYpOQ362xd7Bxbm_Il5RA9T6Cs6tDThZv401VRk9JQRGwx2w_tnHoxDcyQhOrONHb6GkiUFGCRSwAjendBMh5F0WdJJy1Rurf8WJ5dDCwinPu-QJe6yBQuXuAziJVMsJdBMv4mQIHSS6008FshpMhxOZhrO"/>
+<div>
+<h4 class="font-bold text-lg mb-1">Limit Sweet Foods</h4>
+<p class="text-sm text-on-surface-variant">मीठा और मैदा कम करें। (Reduce sugar and refined flour)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Doctor Talking Points -->
+<section class="bg-surface-container-low p-8 rounded-[1.5rem]">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="forum">forum</span>
+<h3 class="text-xl font-bold font-headline">Doctor Talk</h3>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 font-medium">Use these points when speaking with your physician:</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-4 p-4 bg-white/40 rounded-xl hover:bg-white/70 transition-colors cursor-default group">
+<div class="mt-1 bg-primary text-white p-1 rounded-full group-hover:scale-110 duration-200">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span>
+</div>
+<span class="text-on-surface font-medium">"I noticed my hemoglobin is low (8.2). Should I take iron supplements?"</span>
+</li>
+<li class="flex items-start gap-4 p-4 bg-white/40 rounded-xl hover:bg-white/70 transition-colors cursor-default group">
+<div class="mt-1 bg-primary text-white p-1 rounded-full group-hover:scale-110 duration-200">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span>
+</div>
+<span class="text-on-surface font-medium">"My fasting glucose is 115. Do I need a HbA1c test?"</span>
+</li>
+<li class="flex items-start gap-4 p-4 bg-white/40 rounded-xl hover:bg-white/70 transition-colors cursor-default group">
+<div class="mt-1 bg-primary text-white p-1 rounded-full group-hover:scale-110 duration-200">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span>
+</div>
+<span class="text-on-surface font-medium">"Are these values related to my recent tiredness?"</span>
+</li>
+</ul>
+</section>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full mt-auto py-12 px-8 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/20">
+<div class="flex flex-col items-center text-center space-y-4 max-w-4xl mx-auto">
+<span class="font-['Manrope'] font-semibold text-slate-400">MediPal Clinical Curator</span>
+<p class="font-['Inter'] text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                    © 2024 MediPal. Medical Disclaimer: Information provided is for educational purposes and not a substitute for professional medical advice.
+                </p>
+<div class="flex space-x-6">
+<a class="text-xs text-slate-400 hover:text-slate-900 transition-all" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-400 hover:text-slate-900 transition-all" href="#">Terms of Service</a>
+<a class="text-xs text-slate-400 hover:text-slate-900 transition-all" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-lg flex justify-around items-center py-4 px-2 z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined" data-icon="dashboard_customize">dashboard_customize</span>
+<span class="text-[10px] font-bold mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center text-cyan-700">
+<span class="material-symbols-outlined" data-icon="history_edu" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<span class="text-[10px] font-bold mt-1">Reports</span>
+</button>
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined" data-icon="family_restroom">family_restroom</span>
+<span class="text-[10px] font-bold mt-1">Family</span>
+</button>
+<button class="flex flex-col items-center text-slate-400">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-[10px] font-bold mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

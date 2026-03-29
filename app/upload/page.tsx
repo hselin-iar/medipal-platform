@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useProfile } from '@/lib/hooks';
 import { createBrowserSupabaseClient } from '@/lib/supabase';
-import { Upload, FileText, Loader2, AlertCircle } from 'lucide-react';
+import AppShell from '@/components/AppShell';
+import Link from 'next/link';
 
 export default function UploadPage() {
   const { user, loading: profileLoading } = useProfile();
@@ -48,20 +49,19 @@ export default function UploadPage() {
 
   const processUpload = async () => {
     if (!file) {
-      setError("Please select a file first.");
+      setError('Please select a file first.');
       return;
     }
-    
+
     if (!user?.id) {
-      setError("You must be logged in safely to upload reports.");
+      setError('You must be logged in to upload reports.');
       return;
     }
 
     setUploading(true);
     setError(null);
-    
+
     try {
-      // 1. Upload to Supabase Storage
       setStatusText('Uploading secure document...');
       const filePath = `${user.id}/${Date.now()}.pdf`;
       const { error: storageError } = await supabase.storage
@@ -70,9 +70,8 @@ export default function UploadPage() {
 
       if (storageError) throw new Error('Failed to upload securely to storage');
 
-      // 2. Call our API Route to Process
-      setStatusText('Reading your scanned report...');
-      
+      setStatusText('AI is reading your report...');
+
       const response = await fetch('/api/upload-report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -85,11 +84,8 @@ export default function UploadPage() {
         throw new Error(data.error || 'Failed to process report');
       }
 
-      setStatusText('Done! Redirecting...');
-      
-      // 3. Redirect to the newly generated report
+      setStatusText('Done! Redirecting to analysis...');
       router.push(`/report/${data.reportId}`);
-      
     } catch (err: any) {
       console.error(err);
       setError(err.message || 'An unexpected error occurred during upload.');
@@ -99,94 +95,123 @@ export default function UploadPage() {
 
   if (profileLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 space-y-8">
-        
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Upload Medical Lab Report</h1>
-          <p className="text-gray-500">Securely upload your PDF lab report to extract and analyze medical parameters using AI.</p>
-        </div>
-
-        {error && (
-          <div className="bg-red-50 text-red-600 p-4 rounded-xl flex items-center gap-3 text-sm">
-            <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            <p className="font-medium">{error}</p>
-          </div>
-        )}
-
-        <div 
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          className={`border-2 border-dashed rounded-2xl p-12 text-center flex flex-col items-center justify-center transition-all ${
-            file 
-              ? 'border-blue-500 bg-blue-50/50' 
-              : 'border-gray-300 hover:border-blue-400 hover:bg-gray-50 bg-gray-50 cursor-pointer'
-          }`}
+    <AppShell>
+      <div className="max-w-3xl mx-auto">
+        {/* Back */}
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-2 text-sm text-on-surface-variant hover:text-primary transition-colors font-medium mb-8"
         >
-          {file ? (
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                <FileText className="w-8 h-8" />
-              </div>
-              <div className="text-center">
-                <p className="font-semibold text-gray-900">{file.name}</p>
-                <p className="text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
-              </div>
-              {!uploading && (
-                <button 
-                  onClick={() => setFile(null)}
-                  className="text-sm text-red-500 hover:text-red-700 font-medium transition-colors"
-                >
-                  Remove File
-                </button>
-              )}
+          <span className="material-symbols-outlined text-lg">arrow_back</span>
+          Back to Dashboard
+        </Link>
+
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 md:p-12 space-y-8">
+          <div className="text-center space-y-2">
+            <div className="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mx-auto mb-4">
+              <span className="material-symbols-outlined text-primary text-3xl">upload_file</span>
             </div>
-          ) : (
-            <label className="flex flex-col items-center space-y-4 cursor-pointer w-full h-full">
-              <div className="w-16 h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center">
-                <Upload className="w-8 h-8" />
-              </div>
-              <div className="space-y-1">
-                <p className="text-gray-700 font-medium">Click to upload or drag and drop</p>
-                <p className="text-sm text-gray-500">Only PDF files are supported</p>
-              </div>
-              <input
-                type="file"
-                className="hidden"
-                accept="application/pdf"
-                onChange={handleFileChange}
-              />
-            </label>
+            <h1 className="font-headline font-extrabold text-3xl text-primary tracking-tight">
+              Upload Medical Report
+            </h1>
+            <p className="text-on-surface-variant max-w-md mx-auto">
+              Securely upload your PDF lab report. Our Clinical AI will parse and analyze every
+              parameter within minutes.
+            </p>
+          </div>
+
+          {error && (
+            <div className="bg-error-container text-on-error-container p-4 rounded-xl flex items-center gap-3 text-sm">
+              <span className="material-symbols-outlined flex-shrink-0">error</span>
+              <p className="font-medium">{error}</p>
+            </div>
           )}
+
+          {/* Drop Zone */}
+          <div
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            className={`border-2 border-dashed rounded-2xl p-12 text-center flex flex-col items-center justify-center transition-all ${
+              file
+                ? 'border-secondary bg-secondary/5'
+                : 'border-outline-variant/30 hover:border-secondary/50 hover:bg-surface-container-low cursor-pointer'
+            }`}
+          >
+            {file ? (
+              <div className="flex flex-col items-center space-y-4">
+                <div className="w-16 h-16 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                  <span className="material-symbols-outlined text-3xl">description</span>
+                </div>
+                <div className="text-center">
+                  <p className="font-bold text-on-surface">{file.name}</p>
+                  <p className="text-sm text-on-surface-variant">
+                    {(file.size / 1024 / 1024).toFixed(2)} MB
+                  </p>
+                </div>
+                {!uploading && (
+                  <button
+                    onClick={() => setFile(null)}
+                    className="text-sm text-error hover:text-on-error-container font-semibold transition-colors"
+                  >
+                    Remove File
+                  </button>
+                )}
+              </div>
+            ) : (
+              <label className="flex flex-col items-center space-y-4 cursor-pointer w-full h-full">
+                <div className="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center">
+                  <span className="material-symbols-outlined text-3xl">cloud_upload</span>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-on-surface font-semibold">Click to upload or drag and drop</p>
+                  <p className="text-sm text-on-surface-variant">Only PDF files are supported</p>
+                </div>
+                <input
+                  type="file"
+                  className="hidden"
+                  accept="application/pdf"
+                  onChange={handleFileChange}
+                />
+              </label>
+            )}
+          </div>
+
+          {/* Process Button */}
+          <button
+            onClick={processUpload}
+            disabled={!file || uploading}
+            className={`w-full py-4 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-2 ${
+              file && !uploading
+                ? 'vitality-gradient text-white shadow-lg shadow-cyan-900/10 hover:opacity-90 active:scale-[0.98]'
+                : 'bg-surface-container-high text-on-surface-variant cursor-not-allowed'
+            }`}
+          >
+            {uploading ? (
+              <>
+                <div className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                {statusText}
+              </>
+            ) : (
+              <>
+                <span className="material-symbols-outlined text-lg">auto_awesome</span>
+                Process with Clinical AI
+              </>
+            )}
+          </button>
+
+          <div className="flex items-center justify-center gap-2 text-xs text-on-surface-variant">
+            <span className="material-symbols-outlined text-sm">lock</span>
+            <span>End-to-end encrypted. Your data never leaves our secure infrastructure.</span>
+          </div>
         </div>
-
-        <button
-          onClick={processUpload}
-          disabled={!file || uploading}
-          className={`w-full py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center gap-2 ${
-            file && !uploading
-              ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
-              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-          }`}
-        >
-          {uploading ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              {statusText}
-            </>
-          ) : (
-            'Process using AI Engine'
-          )}
-        </button>
-
       </div>
-    </main>
+    </AppShell>
   );
 }

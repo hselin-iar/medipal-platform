@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>History &amp; Comparison - MediPal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#eceef0",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005320",
+                        "on-secondary-fixed": "#00174b",
+                        "tertiary-fixed": "#7ffc97",
+                        "on-primary-fixed": "#001e30",
+                        "on-secondary-container": "#fefcff",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed-variant": "#214a66",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#cae6ff",
+                        "primary-container": "#00334e",
+                        "primary-fixed-dim": "#a4cbec",
+                        "outline": "#72787e",
+                        "outline-variant": "#c2c7ce",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-container": "#003814",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-primary-container": "#759cbb",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary": "#0051d5",
+                        "on-surface-variant": "#42474d",
+                        "inverse-primary": "#a4cbec",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#62df7d",
+                        "surface-tint": "#3b627f",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#316bf3",
+                        "secondary-fixed": "#dbe1ff",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#28ad53",
+                        "tertiary": "#002008",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "primary": "#001d2f",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3133"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 max-w-full bg-slate-50/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-8">
+<span class="font-manrope font-extrabold text-2xl text-cyan-900">MediPal</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-500 font-medium hover:text-cyan-600 transition-colors" href="#">हिन्दी</a>
+<a class="text-cyan-700 font-bold border-b-2 border-cyan-700 pb-1" href="#">English</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer p-2 hover:bg-slate-100 rounded-full transition-all">notifications</span>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-cyan-900">account_circle</span>
+<span class="text-sm font-semibold text-cyan-900">Dr. Aris</span>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen pt-20">
+<!-- Sidebar Shell -->
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 pt-24 bg-slate-100 py-8 z-40">
+<div class="px-6 mb-8">
+<h3 class="font-manrope font-bold text-xl text-cyan-900">Clinical Curator</h3>
+<p class="text-xs text-slate-500">Your Health Narrative</p>
+</div>
+<nav class="flex flex-col space-y-1">
+<a class="text-slate-600 pl-8 py-3 hover:bg-slate-200 transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard_customize</span> Dashboard
+                </a>
+<a class="bg-white text-cyan-700 rounded-l-full ml-4 pl-4 py-3 shadow-sm flex items-center gap-3 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined text-[20px]">history_edu</span> History
+                </a>
+<a class="text-slate-600 pl-8 py-3 hover:bg-slate-200 transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">family_restroom</span> Family
+                </a>
+<a class="text-slate-600 pl-8 py-3 hover:bg-slate-200 transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">badge</span> Passport
+                </a>
+<a class="text-slate-600 pl-8 py-3 hover:bg-slate-200 transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-[20px]">help_outline</span> Help
+                </a>
+</nav>
+<div class="mt-auto px-6 pb-8">
+<button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-white rounded-xl font-semibold text-sm shadow-md active:scale-95 transition-all">
+                    Book Consultation
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 p-8 bg-background">
+<div class="max-w-6xl mx-auto">
+<!-- Header & Search -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<h1 class="font-manrope font-extrabold text-4xl tracking-tight text-primary mb-2">History</h1>
+<p class="text-on-surface-variant font-body">Analyze and track your longitudinal health journey.</p>
+</div>
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-[#f2f4f7] border-none rounded-2xl focus:ring-2 focus:ring-secondary text-sm transition-all outline-none" placeholder="Search medical reports, vitals..." type="text"/>
+</div>
+</div>
+<!-- Bento Grid Layout for History & Comparison -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Report List (Asymmetric Width) -->
+<div class="lg:col-span-4 space-y-4">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-manrope font-bold text-lg text-primary">Recent Reports</h2>
+<span class="text-xs font-semibold text-secondary cursor-pointer">View All</span>
+</div>
+<!-- Report Card Active -->
+<div class="p-5 bg-surface-container-lowest rounded-2xl shadow-sm border-l-4 border-secondary flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Report A</span>
+<span class="text-xs text-outline font-medium">Oct 12, 2023</span>
+</div>
+<div>
+<h4 class="font-manrope font-bold text-primary">Annual Wellness Screen</h4>
+<p class="text-xs text-on-surface-variant">Metropolis Labs • ID: #8821</p>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span class="text-[11px] font-semibold text-secondary">Ready for Comparison</span>
+</div>
+</div>
+<!-- Report Card 2 -->
+<div class="p-5 bg-surface-container-lowest rounded-2xl hover:bg-surface-container-low transition-colors cursor-pointer flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Report B</span>
+<span class="text-xs text-outline font-medium">Mar 04, 2023</span>
+</div>
+<div>
+<h4 class="font-manrope font-bold text-primary">Biochemical Profile</h4>
+<p class="text-xs text-on-surface-variant">Quest Diagnostics • ID: #7440</p>
+</div>
+</div>
+<!-- Report Card 3 -->
+<div class="p-5 bg-surface-container-lowest rounded-2xl hover:bg-surface-container-low transition-colors cursor-pointer flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<span class="text-xs text-outline font-medium">Jan 15, 2023</span>
+</div>
+<div>
+<h4 class="font-manrope font-bold text-primary">Vitamin Panel</h4>
+<p class="text-xs text-on-surface-variant">City Life Care • ID: #6211</p>
+</div>
+</div>
+<!-- Trust Score Module (Corner) -->
+<div class="mt-8 p-6 bg-primary-container rounded-3xl relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="text-on-primary-container text-xs font-bold uppercase tracking-widest mb-4">Trust Score</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-manrope font-extrabold text-white">98</span>
+<span class="text-on-primary-container font-bold">/100</span>
+</div>
+<p class="text-[11px] text-on-primary-container mt-2 leading-tight">Verified by MediPal Blockchain Health ID. High report integrity.</p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-7xl text-white/5 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+<!-- Right Column: Comparison Tool -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-3xl p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="font-manrope font-bold text-2xl text-primary">Analytical Comparison</h2>
+<p class="text-sm text-on-surface-variant">Visualizing deltas between selected medical reports</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-lowest rounded-xl shadow-sm hover:bg-white transition-all">
+<span class="material-symbols-outlined text-outline">ios_share</span>
+</button>
+<button class="p-2 bg-surface-container-lowest rounded-xl shadow-sm hover:bg-white transition-all">
+<span class="material-symbols-outlined text-outline">print</span>
+</button>
+</div>
+</div>
+<!-- Parameter Delta Section -->
+<div class="space-y-10">
+<!-- B12 Row -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<h4 class="font-manrope font-bold text-primary">Vitamin B12 (Cyanocobalamin)</h4>
+<p class="text-xs text-on-surface-variant font-medium">Optimal Range: 200 - 900 pg/mL</p>
+</div>
+<div class="text-right">
+<span class="text-on-tertiary-container bg-tertiary-fixed-dim/30 px-3 py-1 rounded-full text-xs font-bold">+16.6% Improvement</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative h-8 bg-surface-container-highest rounded-full overflow-hidden flex items-center">
+<div class="absolute left-0 top-0 h-full bg-outline/20" style="width: 45%;"></div>
+<div class="absolute left-0 top-0 h-full bg-secondary-container rounded-full" style="width: 52.5%;"></div>
+<div class="z-10 w-full flex justify-between px-4 text-[11px] font-bold">
+<span class="text-primary">180 pg/mL (Mar 04)</span>
+<span class="text-white">210 pg/mL (Oct 12)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Hemoglobin Row -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<h4 class="font-manrope font-bold text-primary">Hemoglobin (Hb)</h4>
+<p class="text-xs text-on-surface-variant font-medium">Optimal Range: 13.5 - 17.5 g/dL</p>
+</div>
+<div class="text-right">
+<span class="text-on-tertiary-container bg-tertiary-fixed-dim/30 px-3 py-1 rounded-full text-xs font-bold">+4.3% Stable</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative h-8 bg-surface-container-highest rounded-full overflow-hidden flex items-center">
+<div class="absolute left-0 top-0 h-full bg-outline/20" style="width: 68%;"></div>
+<div class="absolute left-0 top-0 h-full bg-secondary-container rounded-full" style="width: 71%;"></div>
+<div class="z-10 w-full flex justify-between px-4 text-[11px] font-bold">
+<span class="text-primary">13.8 g/dL (Mar 04)</span>
+<span class="text-white">14.4 g/dL (Oct 12)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- LDL Cholesterol Row -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<h4 class="font-manrope font-bold text-primary">LDL Cholesterol</h4>
+<p class="text-xs text-on-surface-variant font-medium">Optimal Range: &lt; 100 mg/dL</p>
+</div>
+<div class="text-right">
+<span class="text-on-error-container bg-error-container px-3 py-1 rounded-full text-xs font-bold">-12.5% Caution</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative h-8 bg-surface-container-highest rounded-full overflow-hidden flex items-center">
+<div class="absolute left-0 top-0 h-full bg-error rounded-full" style="width: 85%;"></div>
+<div class="absolute left-0 top-0 h-full bg-outline/20" style="width: 75%;"></div>
+<div class="z-10 w-full flex justify-between px-4 text-[11px] font-bold">
+<span class="text-white">150 mg/dL (Mar 04)</span>
+<span class="text-primary">132 mg/dL (Oct 12)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Insight Card -->
+<div class="mt-12 p-6 bg-surface-container rounded-2xl flex gap-6 items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white">psychiatry</span>
+</div>
+<div>
+<h5 class="font-manrope font-bold text-primary mb-1">Clinical Insight</h5>
+<p class="text-sm text-on-surface-variant leading-relaxed">Your B12 levels have entered the normal range following the prescribed 3-month course. LDL shows a downward trend but remains above optimal thresholds. Recommend continuing the current cardiovascular regime.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer Shell -->
+<footer class="w-full mt-auto py-12 px-8 bg-slate-50 border-t border-slate-100">
+<div class="flex flex-col items-center text-center space-y-4 max-w-4xl mx-auto">
+<span class="font-manrope font-semibold text-slate-400">MediPal</span>
+<p class="font-['Inter'] text-xs leading-relaxed text-slate-500">
+                © 2024 MediPal. Medical Disclaimer: Information provided is for educational purposes and not a substitute for professional medical advice.
+            </p>
+<div class="flex gap-6">
+<a class="text-slate-400 text-xs hover:text-slate-900 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-400 text-xs hover:text-slate-900 transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-400 text-xs hover:text-slate-900 transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

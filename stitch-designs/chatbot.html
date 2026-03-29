@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#eceef0",
+              "on-surface": "#191c1e",
+              "surface-variant": "#e0e3e5",
+              "on-tertiary-fixed-variant": "#005320",
+              "on-secondary-fixed": "#00174b",
+              "tertiary-fixed": "#7ffc97",
+              "on-primary-fixed": "#001e30",
+              "on-secondary-container": "#fefcff",
+              "background": "#f7f9fb",
+              "on-primary-fixed-variant": "#214a66",
+              "surface-container-low": "#f2f4f6",
+              "on-error-container": "#93000a",
+              "error": "#ba1a1a",
+              "primary-fixed": "#cae6ff",
+              "primary-container": "#00334e",
+              "primary-fixed-dim": "#a4cbec",
+              "outline": "#72787e",
+              "outline-variant": "#c2c7ce",
+              "on-tertiary-fixed": "#002109",
+              "tertiary-container": "#003814",
+              "surface-bright": "#f7f9fb",
+              "on-secondary-fixed-variant": "#003ea8",
+              "on-primary-container": "#759cbb",
+              "surface": "#f7f9fb",
+              "secondary-fixed-dim": "#b4c5ff",
+              "surface-container-highest": "#e0e3e5",
+              "secondary": "#0051d5",
+              "on-surface-variant": "#42474d",
+              "inverse-primary": "#a4cbec",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#62df7d",
+              "surface-tint": "#3b627f",
+              "surface-container-lowest": "#ffffff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-container": "#316bf3",
+              "secondary-fixed": "#dbe1ff",
+              "surface-dim": "#d8dadc",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#28ad53",
+              "tertiary": "#002008",
+              "surface-container-high": "#e6e8ea",
+              "on-primary": "#ffffff",
+              "on-background": "#191c1e",
+              "primary": "#001d2f",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2d3133"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .chat-scroll::-webkit-scrollbar {
+        width: 4px;
+      }
+      .chat-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .chat-scroll::-webkit-scrollbar-thumb {
+        background: #e0e3e5;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 max-w-full bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-4">
+<span class="font-['Manrope'] font-extrabold text-2xl text-cyan-900 dark:text-cyan-50">MediPal</span>
+<div class="hidden md:flex items-center gap-2 ml-8">
+<span class="text-cyan-700 dark:text-cyan-300 font-bold border-b-2 border-cyan-700 dark:border-cyan-300 pb-1 cursor-pointer">English</span>
+<span class="text-slate-500 dark:text-slate-400 font-medium hover:text-cyan-600 dark:hover:text-cyan-200 transition-colors cursor-pointer ml-4">हिन्दी</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-cyan-900 dark:text-cyan-100 hover:scale-95 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-cyan-900">account_circle</span>
+<span class="font-headline font-bold text-sm text-cyan-900">Nilesh's Profile</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-20 pb-0">
+<!-- SideNavBar - Suppressed on mobile, visible on web -->
+<nav class="hidden md:flex flex-col h-[calc(100vh-5rem)] w-64 fixed left-0 bg-slate-100 dark:bg-slate-900 py-8">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-2xl">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="professional medical headshot of a friendly female nurse in clean blue scrubs with a soft clinical background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1n56QjRUHSY5U0pIpLWm0l53e9XPT-HkKA_Xbr_EQhE1vf5egBxQKhk2v78Oe010C1WoFQ5q_Od_JrX2BwJ0L-i5qX2girqsKTcqmxfKcB3X5CbbeId0BxpPwJJSktvSs-J_7Vr2GcpOP4akzzjPkMC_5H2AP2tcG7VsqwAe1ePk4Bqz4T3GFyfF43idobiy2fCi_AWnJHcFt4wucz0MJsHtl4Ux1MNCKFix9bmsP8ri41a5onphz7wQksEvGtZzEacAJMgR2YzZS"/>
+<div>
+<p class="font-headline font-bold text-sm text-cyan-900">Clinical Curator</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Your Health Narrative</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">dashboard_customize</span>
+<span class="font-['Inter'] text-sm font-semibold">Dashboard</span>
+</a>
+<a class="bg-white dark:bg-slate-800 text-cyan-700 dark:text-cyan-300 rounded-l-full ml-4 pl-4 py-3 shadow-sm translate-x-1 duration-200 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+<span class="font-['Inter'] text-sm font-semibold">History</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">family_restroom</span>
+<span class="font-['Inter'] text-sm font-semibold">Family</span>
+</a>
+<a class="text-slate-600 dark:text-slate-400 pl-8 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all flex items-center gap-3" href="#">
+<span class="material-symbols-outlined text-lg">badge</span>
+<span class="font-['Inter'] text-sm font-semibold">Passport</span>
+</a>
+</div>
+<div class="mt-auto px-6">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-3 rounded-2xl font-headline font-bold text-sm shadow-lg hover:scale-95 transition-transform">
+                    Book Consultation
+                </button>
+</div>
+</nav>
+<!-- Main Content Area: AI Nurse Chat -->
+<main class="flex-1 md:ml-64 flex flex-col h-[calc(100vh-5rem)] bg-surface">
+<!-- Chat Header / Context Bar -->
+<div class="px-8 py-4 bg-surface-container-low flex items-center justify-between border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container">description</span>
+<span class="font-headline font-bold text-cyan-900">4 Recent Reports Indexed</span>
+</div>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="text-xs font-medium uppercase tracking-widest">RAG-Powered Intelligence</span>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-tertiary-fixed rounded-full">
+<span class="text-[10px] font-bold text-on-tertiary-fixed uppercase">Connected</span>
+<div class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></div>
+</div>
+</div>
+<!-- Chat Message Area -->
+<div class="flex-1 overflow-y-auto chat-scroll px-8 py-6 space-y-8">
+<!-- AI Message -->
+<div class="flex gap-4 max-w-3xl">
+<div class="w-10 h-10 rounded-2xl bg-primary-container flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-6 rounded-2xl rounded-tl-none shadow-sm border border-outline-variant/20">
+<p class="font-headline font-bold text-primary mb-2">Hello Nilesh,</p>
+<p class="text-on-surface-variant leading-relaxed mb-4">
+                                I've reviewed your last 4 blood reports. While your overall vitality markers are trending positively, I've noticed a slight dip in your iron stores. Here is the summary of the critical findings:
+                            </p>
+<!-- Data Cards (Bento Style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+<div class="bg-surface-container-low p-4 rounded-xl border-l-4 border-error">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-slate-500 uppercase">Hemoglobin</span>
+<span class="material-symbols-outlined text-error text-lg">trending_down</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-headline font-extrabold text-primary">11.2</span>
+<span class="text-xs text-slate-500">g/dL</span>
+</div>
+<div class="mt-2 h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 45%"></div>
+</div>
+<p class="text-[10px] mt-2 text-on-error-container font-medium">Ref Range: 13.5 - 17.5</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-slate-500 uppercase">Ferritin</span>
+<span class="material-symbols-outlined text-secondary text-lg">info</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-headline font-extrabold text-primary">28</span>
+<span class="text-xs text-slate-500">ng/mL</span>
+</div>
+<div class="mt-2 h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 30%"></div>
+</div>
+<p class="text-[10px] mt-2 text-on-secondary-fixed-variant font-medium">Ref Range: 30 - 400</p>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant italic mt-4 bg-slate-50 p-3 rounded-lg">
+                                This suggests mild iron deficiency anemia. Would you like me to explain the next steps or suggest a dietary plan based on your history?
+                            </p>
+</div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex gap-4 max-w-2xl ml-auto flex-row-reverse">
+<div class="w-10 h-10 rounded-2xl bg-secondary flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-white">person</span>
+</div>
+<div class="bg-primary text-white p-5 rounded-2xl rounded-tr-none shadow-md">
+<p class="text-sm leading-relaxed">
+                            How does this compare to my test from six months ago? I remember feeling much more tired then.
+                        </p>
+</div>
+</div>
+<!-- AI Response Placeholder / Thinking -->
+<div class="flex gap-4 max-w-3xl">
+<div class="w-10 h-10 rounded-2xl bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container">clinical_notes</span>
+</div>
+<div class="bg-surface-container-low px-6 py-4 rounded-2xl rounded-tl-none flex items-center gap-3">
+<div class="flex gap-1">
+<div class="w-2 h-2 bg-on-primary-container/40 rounded-full animate-bounce"></div>
+<div class="w-2 h-2 bg-on-primary-container/40 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+<div class="w-2 h-2 bg-on-primary-container/40 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+</div>
+<span class="text-xs font-headline font-bold text-on-primary-container uppercase tracking-widest">Scanning History...</span>
+</div>
+</div>
+</div>
+<!-- Input and Quick Actions -->
+<div class="p-6 bg-surface-container-lowest/80 backdrop-blur-xl border-t border-outline-variant/10">
+<!-- Quick Reply Chips -->
+<div class="flex flex-wrap gap-2 mb-4">
+<button class="px-4 py-2 bg-surface-container text-primary text-xs font-bold rounded-full border border-outline-variant/30 hover:bg-secondary-container hover:text-white transition-all">
+                        Explain my last CBC
+                    </button>
+<button class="px-4 py-2 bg-surface-container text-primary text-xs font-bold rounded-full border border-outline-variant/30 hover:bg-secondary-container hover:text-white transition-all">
+                        What tests next?
+                    </button>
+<button class="px-4 py-2 bg-surface-container text-primary text-xs font-bold rounded-full border border-outline-variant/30 hover:bg-secondary-container hover:text-white transition-all">
+                        Anemia symptoms check
+                    </button>
+</div>
+<!-- Text Input -->
+<div class="relative flex items-center bg-surface-container-highest rounded-2xl p-2 gap-2 border border-outline-variant/20 focus-within:border-secondary transition-colors">
+<button class="p-2 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-sm py-2 px-1 placeholder:text-slate-400" placeholder="Ask your clinical curator anything..." type="text"/>
+<div class="flex items-center gap-2 pr-2">
+<button class="p-2 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="bg-secondary text-white p-2.5 rounded-xl shadow-lg hover:scale-95 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer (Suppressed Nav - Primary Focus UI) -->
+<footer class="w-full mt-auto py-8 px-8 bg-slate-50 dark:bg-slate-950 flex flex-col items-center text-center space-y-4">
+<p class="font-['Manrope'] font-semibold text-slate-400">MediPal Clinical Intelligence</p>
+<p class="font-['Inter'] text-xs leading-relaxed text-slate-500 max-w-4xl">
+            © 2024 MediPal. Medical Disclaimer: Information provided is for educational purposes and not a substitute for professional medical advice. Always consult with a physician for health concerns.
+        </p>
+<div class="flex gap-6">
+<a class="text-slate-400 font-['Inter'] text-xs hover:text-slate-900 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-400 font-['Inter'] text-xs hover:text-slate-900 transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-400 font-['Inter'] text-xs hover:text-slate-900 transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</body></html>

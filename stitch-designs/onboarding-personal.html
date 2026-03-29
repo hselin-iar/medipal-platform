@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediPal Onboarding - Personal Details</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#eceef0",
+              "on-surface": "#191c1e",
+              "surface-variant": "#e0e3e5",
+              "on-tertiary-fixed-variant": "#005320",
+              "on-secondary-fixed": "#00174b",
+              "tertiary-fixed": "#7ffc97",
+              "on-primary-fixed": "#001e30",
+              "on-secondary-container": "#fefcff",
+              "background": "#f7f9fb",
+              "on-primary-fixed-variant": "#214a66",
+              "surface-container-low": "#f2f4f6",
+              "on-error-container": "#93000a",
+              "error": "#ba1a1a",
+              "primary-fixed": "#cae6ff",
+              "primary-container": "#00334e",
+              "primary-fixed-dim": "#a4cbec",
+              "outline": "#72787e",
+              "outline-variant": "#c2c7ce",
+              "on-tertiary-fixed": "#002109",
+              "tertiary-container": "#003814",
+              "surface-bright": "#f7f9fb",
+              "on-secondary-fixed-variant": "#003ea8",
+              "on-primary-container": "#759cbb",
+              "surface": "#f7f9fb",
+              "secondary-fixed-dim": "#b4c5ff",
+              "surface-container-highest": "#e0e3e5",
+              "secondary": "#0051d5",
+              "on-surface-variant": "#42474d",
+              "inverse-primary": "#a4cbec",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#62df7d",
+              "surface-tint": "#3b627f",
+              "surface-container-lowest": "#ffffff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-container": "#316bf3",
+              "secondary-fixed": "#dbe1ff",
+              "surface-dim": "#d8dadc",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#28ad53",
+              "tertiary": "#002008",
+              "surface-container-high": "#e6e8ea",
+              "on-primary": "#ffffff",
+              "on-background": "#191c1e",
+              "primary": "#001d2f",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2d3133"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .soft-shadow {
+            box-shadow: 0 24px 48px -12px rgba(25, 28, 30, 0.06);
+        }
+        .form-input-bg {
+            background-color: #f2f4f7;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation (Suppressing full TopAppBar for Onboarding Focus) -->
+<header class="fixed top-0 w-full flex justify-between items-center px-8 py-6 z-50">
+<div class="font-headline font-extrabold text-2xl text-primary tracking-tight">MediPal</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest">Step 1 of 4</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+<div class="w-full max-w-2xl">
+<!-- Progress Indicator -->
+<div class="mb-12 px-2">
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-1/4 rounded-full transition-all duration-700 ease-out"></div>
+</div>
+</div>
+<!-- The Therapeutic Canvas (Form Container) -->
+<div class="bg-surface-container-lowest p-8 md:p-12 rounded-2xl soft-shadow">
+<header class="mb-10">
+<h1 class="font-headline font-bold text-3xl md:text-4xl text-primary mb-3">Personal details</h1>
+<p class="text-on-surface-variant text-base">Let's begin your clinical narrative. This information helps us tailor your health insights.</p>
+</header>
+<form class="space-y-8">
+<!-- Bento-style Form Grid -->
+<div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+<!-- Full Name (Span 6) -->
+<div class="md:col-span-6 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1">Full Name</label>
+<input class="w-full px-5 py-4 form-input-bg border-none rounded-lg focus:ring-2 focus:ring-secondary transition-all placeholder:text-outline/50 font-body text-on-surface" placeholder="e.g. Dr. Julian Thorne" type="text"/>
+</div>
+<!-- Age (Span 2) -->
+<div class="md:col-span-2 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1">Age</label>
+<input class="w-full px-5 py-4 form-input-bg border-none rounded-lg focus:ring-2 focus:ring-secondary transition-all placeholder:text-outline/50 font-body text-on-surface" placeholder="Years" type="number"/>
+</div>
+<!-- Sex (Span 4) -->
+<div class="md:col-span-4 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1">Sex</label>
+<div class="flex gap-2">
+<button class="flex-1 py-4 form-input-bg rounded-lg text-sm font-medium hover:bg-surface-container transition-colors" type="button">Male</button>
+<button class="flex-1 py-4 bg-primary text-on-primary rounded-lg text-sm font-medium" type="button">Female</button>
+<button class="flex-1 py-4 form-input-bg rounded-lg text-sm font-medium hover:bg-surface-container transition-colors" type="button">Other</button>
+</div>
+</div>
+<!-- Weight (Span 3) -->
+<div class="md:col-span-3 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1">Weight (kg)</label>
+<input class="w-full px-5 py-4 form-input-bg border-none rounded-lg focus:ring-2 focus:ring-secondary transition-all placeholder:text-outline/50 font-body text-on-surface" placeholder="e.g. 72" type="text"/>
+</div>
+<!-- Height (Span 3) -->
+<div class="md:col-span-3 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1">Height (cm)</label>
+<input class="w-full px-5 py-4 form-input-bg border-none rounded-lg focus:ring-2 focus:ring-secondary transition-all placeholder:text-outline/50 font-body text-on-surface" placeholder="e.g. 178" type="text"/>
+</div>
+<!-- Blood Group (Span 6) -->
+<div class="md:col-span-6 space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1">Blood Group</label>
+<div class="grid grid-cols-4 md:grid-cols-8 gap-2">
+<button class="py-3 form-input-bg rounded-lg text-xs font-bold hover:bg-secondary-container hover:text-white transition-all" type="button">A+</button>
+<button class="py-3 form-input-bg rounded-lg text-xs font-bold hover:bg-secondary-container hover:text-white transition-all" type="button">A-</button>
+<button class="py-3 form-input-bg rounded-lg text-xs font-bold hover:bg-secondary-container hover:text-white transition-all" type="button">B+</button>
+<button class="py-3 form-input-bg rounded-lg text-xs font-bold hover:bg-secondary-container hover:text-white transition-all" type="button">B-</button>
+<button class="py-3 form-input-bg rounded-lg text-xs font-bold hover:bg-secondary-container hover:text-white transition-all" type="button">O+</button>
+<button class="py-3 form-input-bg rounded-lg text-xs font-bold hover:bg-secondary-container hover:text-white transition-all" type="button">O-</button>
+<button class="py-3 form-input-bg rounded-lg text-xs font-bold hover:bg-secondary-container hover:text-white transition-all" type="button">AB+</button>
+<button class="py-3 form-input-bg rounded-lg text-xs font-bold hover:bg-secondary-container hover:text-white transition-all" type="button">AB-</button>
+</div>
+</div>
+</div>
+<!-- Footer Action Area -->
+<div class="pt-8 flex flex-col items-center space-y-6">
+<button class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-lg rounded-2xl active:scale-95 transition-transform duration-150 flex justify-center items-center gap-2" type="submit">
+                            Continue
+                            <span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<div class="flex items-start gap-3 max-w-md">
+<span class="material-symbols-outlined text-outline-variant mt-0.5" data-icon="lock" style="font-size: 16px;">lock</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                                Privacy disclaimer: Your clinical data is encrypted with enterprise-grade security. Information provided is used strictly for medical narrative synthesis and is never shared with third-party advertisers.
+                            </p>
+</div>
+</div>
+</form>
+</div>
+<!-- Secondary CTA -->
+<div class="mt-8 text-center">
+<button class="text-on-surface-variant font-medium text-sm hover:text-primary transition-colors flex items-center justify-center gap-1 mx-auto">
+                    I'll complete this later
+                </button>
+</div>
+</div>
+</main>
+<!-- Illustrative Backdrop (Asymmetric Tonal Layering) -->
+<div class="fixed top-0 right-0 -z-10 w-1/3 h-full bg-surface-container-low opacity-40 rounded-l-[100px]"></div>
+<div class="fixed bottom-0 left-0 -z-10 w-64 h-64 bg-secondary-fixed opacity-10 rounded-full blur-3xl"></div>
+<!-- Minimal Footer -->
+<footer class="w-full py-8 px-8 flex justify-center border-t border-transparent">
+<div class="text-center space-y-2">
+<div class="font-headline font-semibold text-slate-400 text-sm">MediPal</div>
+<p class="font-body text-[10px] text-slate-400 max-w-lg mx-auto uppercase tracking-tighter">
+                © 2024 MediPal. Medical Disclaimer: Information provided is for educational purposes and not a substitute for professional medical advice.
+            </p>
+</div>
+</footer>
+</body></html>

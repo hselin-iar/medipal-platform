@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediPal | Family Hub</title>
+<!-- Google Fonts: Manrope & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface": "#f7f9fd",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffdcbc",
+              "primary-fixed": "#c4e7ff",
+              "surface-tint": "#286482",
+              "primary": "#00354a",
+              "tertiary": "#4a2a00",
+              "on-tertiary-fixed": "#2c1700",
+              "surface-variant": "#e0e3e6",
+              "secondary": "#116d20",
+              "inverse-surface": "#2d3134",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#f8ba79",
+              "outline-variant": "#c0c7ce",
+              "surface-container-high": "#e6e8ec",
+              "on-tertiary-fixed-variant": "#673d05",
+              "secondary-fixed-dim": "#83da7f",
+              "on-primary-container": "#85bddf",
+              "on-secondary-fixed-variant": "#005313",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#71787e",
+              "surface-container-highest": "#e0e3e6",
+              "error": "#ba1a1a",
+              "surface-bright": "#f7f9fd",
+              "surface-container-low": "#f2f4f8",
+              "inverse-on-surface": "#eff1f5",
+              "secondary-fixed": "#9ef798",
+              "tertiary-container": "#683e06",
+              "primary-fixed-dim": "#95cef0",
+              "on-primary-fixed": "#001e2c",
+              "on-secondary-fixed": "#002204",
+              "inverse-primary": "#95cef0",
+              "on-error": "#ffffff",
+              "primary-container": "#004d6a",
+              "on-secondary-container": "#187224",
+              "on-primary-fixed-variant": "#004c69",
+              "on-surface-variant": "#40484d",
+              "on-surface": "#181c1f",
+              "on-error-container": "#93000a",
+              "surface-dim": "#d8dade",
+              "on-tertiary-container": "#e7ab6b",
+              "on-background": "#181c1f",
+              "secondary-container": "#9bf496",
+              "background": "#f7f9fd",
+              "surface-container": "#eceef2"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #00354a 0%, #004d6a 100%);
+        }
+        .floating-node {
+            transition: transform 0.4s ease;
+        }
+        .floating-node:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full flex justify-between items-center px-8 h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 shadow-[0_12px_40px_rgba(24,28,31,0.04)]">
+<div class="text-2xl font-bold text-[#00354a] dark:text-[#c4e7ff] tracking-tighter font-headline">MediPal</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-slate-500 hover:text-[#004d6a] transition-colors" data-icon="language">language</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-[#004d6a] transition-colors relative" data-icon="notifications">
+                notifications
+                <span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border-2 border-white">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a man with a friendly smile, clean lighting, soft background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUChgddoy6kVi3Gou0i_27aiidtwH8qkG1WMkgbOvVZhC9Q9VQsFP7L6sUfSo1drooTI5HkMfSQvVktbkZifSszOxRuj4D7iBwltubLz-xRkKpXlC9GknFlPwaG4-Dkkzigz0P-60BSGfjS6lknpROuHs7AP79DB4k9m2VrIwXW5dJZAZhAzl2qaK43y9WZli35I_YKkEUHkf1CRceXvP4EIBf5_g989jGqRApA8KbMJyNrBs4YxYvIqnmgbRsM3TwI1W7wZJnxx6Z"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-6 space-y-2 bg-white dark:bg-slate-900 w-64 pt-24 z-40">
+<div class="mb-8 px-4">
+<h2 class="text-xl font-extrabold text-[#00354a] dark:text-[#c4e7ff] font-headline">MediPal</h2>
+<p class="text-xs text-slate-400 font-medium">Therapeutic Canvas</p>
+</div>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-medium text-sm">History</span>
+</a>
+<a class="flex items-center gap-3 bg-white dark:bg-slate-800 text-[#004d6a] dark:text-[#c4e7ff] rounded-xl px-4 py-3 shadow-sm border border-slate-100" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-medium text-sm">Family</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-medium text-sm">Passport</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-medium text-sm">Help</span>
+</a>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 min-h-screen px-12 pb-16">
+<!-- Header Section with Breath -->
+<header class="mb-16">
+<h1 class="text-[3.5rem] font-headline font-bold leading-tight tracking-tight text-on-surface">Family Hub</h1>
+<p class="text-title-md text-on-surface-variant max-w-xl mt-4">A living ecosystem of your collective wellness. Monitor trends, shared genetic insights, and upcoming health milestones.</p>
+</header>
+<div class="asymmetric-grid items-start">
+<!-- Central Node & Floating Profiles (Visual Hub) -->
+<section class="relative h-[600px] bg-surface-container-low rounded-xl overflow-hidden flex items-center justify-center">
+<!-- Decorative background elements -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg fill="none" height="100%" viewbox="0 0 800 600" width="100%" xmlns="http://www.w3.org/2000/svg">
+<circle cx="400" cy="300" r="120" stroke="currentColor" stroke-dasharray="8 8"></circle>
+<circle cx="400" cy="300" r="220" stroke="currentColor" stroke-dasharray="4 4"></circle>
+</svg>
+</div>
+<!-- YOU Node -->
+<div class="relative z-20 flex flex-col items-center">
+<div class="w-32 h-32 rounded-full p-1 hero-gradient shadow-xl flex items-center justify-center">
+<div class="w-full h-full rounded-full border-4 border-white/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of the user, smiling confidently with bright professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo7ZwAftxORj6eUJAhRSpgSrsMf4P7v_Xi0iZVxIGTGF2c_L-aA4njuBMRcIXePA7iCqliZPJKcg2tyThlaYM_6nsjLY54I8ZyRicnaEYNcq7lDEI2cFWp1jXpTH2co-LF0fkXT4Y0cER1f25jyhXBtEbr3X2UW9_uQbpuNHD5JwfDJgsn1qhJXjuyRQNb5xI1PcX0V_C-LF_jzIs17b2Ng9X8kYXh9I92ZH5odf_i-LDMcCE5EII-SfJDDq304fqYjiSTl4mt-lCu"/>
+</div>
+</div>
+<span class="mt-4 font-headline font-bold text-lg text-primary">You</span>
+</div>
+<!-- Mom Node (Floating Circular) -->
+<div class="absolute top-[15%] left-[20%] floating-node z-10 flex flex-col items-center cursor-pointer">
+<div class="w-24 h-24 rounded-full p-0.5 bg-white shadow-lg">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a middle-aged woman with warm expression and natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtBW61-lIplvga2YeE4ZQL19d5FWQc5Crjby2Bddjm3aF1rQcCzCldIGR13HnYo6BD_zOK-P_sYxDe7JilZzAq6oZU28EnKtROupo9_Iztmlh4I-me3ujkpUw69pRJBztLt0HPV2VeEnTrxK0Duudaxd9qbY7OGjsIXSdnZcoDoASS4z2t9ZAUSO84pDVLxOfJ75TkKtK-MeQWzGAYWMgZDm7OfujwJOMh54mRDeZJWxmyKLluBHKKNLZyY_bv-5c2HOM7qP0lHhTh"/>
+</div>
+</div>
+<span class="mt-2 text-sm font-semibold">Mom</span>
+</div>
+<!-- Dad Node (Floating Circular) -->
+<div class="absolute bottom-[20%] right-[15%] floating-node z-10 flex flex-col items-center cursor-pointer">
+<div class="w-28 h-28 rounded-full p-0.5 bg-white shadow-lg">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a middle-aged man with glasses and professional studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAImljFFCcSh7SVi7PhsM_4lH36ZNfyj2PPv7TIhnjwyXEqgUdkmLK4sJeSHMj3Q2Rufdy51lJXoLV_1i-oAgGjWGHeN74iKQ7dY9AaS1FEuXsyjSxf6zqO-jploYNL_zo77nSm_dY1KzL3Y6_UnOw_PjDa-InESK1DE0Or1x-diqVZbljpNgYvzSL5V183t6PZW0c9efD-9DLyE2-6oUXtDr-uyWx6OMsYRd8gXgGkPq51ctNR-jaIMvKVc7Vo80CfdLkIBGw8exuO"/>
+</div>
+</div>
+<span class="mt-2 text-sm font-semibold">Dad</span>
+</div>
+<!-- Sister (Maya) Node (Floating Circular) -->
+<div class="absolute top-[25%] right-[25%] floating-node z-10 flex flex-col items-center cursor-pointer">
+<div class="w-20 h-20 rounded-full p-0.5 bg-white shadow-lg">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a young girl laughing, bright sunny outdoor background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMNJ7DYObAMhwjHdP99InlBiHCewgP1zaK3x8SpvRLg6qbkoEJJMHk8lZRqGgbvAL4hAyUkgn8-9KHS3F6pjkAF_U3RHNwLAh27hQ6fY4TlJT1eQDouErbPQnszYlzqzKaZ6KWXyAstbsZ9VGS2hu4lf7ZqgqvnDCEewwvvaUINiWtxbQYFD9sdsLfOE-h1RcqA-0JvfnDJ8FF35GR6uSW9cENqWUMvkHmxrK7bgfkQjtM8BHtUkTxTNWk4qPkrtokXuvC-mJV6BL1"/>
+</div>
+</div>
+<span class="mt-2 text-sm font-semibold">Sister (Maya)</span>
+</div>
+</section>
+<!-- Member Details (Glassmorphic Side Panel) -->
+<aside class="glass-panel border border-white/40 shadow-[0_12px_40px_rgba(24,28,31,0.06)] rounded-xl p-8 sticky top-28">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-headline-md font-bold text-primary">Member Details</h3>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Currently Viewing: Dad</p>
+</div>
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="avatar of father" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqwzwr5De6TTdVsjbfAv02NvEglnKWbFByq4XMSRNcN1Z4WkyBe5sqrL5fMrzoNi5S6wwlrxBUnCmDue8ULVwMiasAIUa2OS70h-ZODNzIkpIzXG1hADddmSHata4tU-30cXccpnUCZ5zlXJZKeLC1oZFWVTGZfz4SxuJuenBeaLpytmyNqGAPvGIJjxwxagzBVQHSFfNCYPbx9ueSwccjTYT6rYZeALYH0kaEUF6KGXLVulGI1ImrVcNNZvU4J6K26wWxLOiWryk-"/>
+</div>
+</div>
+<!-- Health Stats Grid -->
+<div class="space-y-6">
+<div class="p-4 bg-surface-container-lowest rounded-xl">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-slate-500">Cardiovascular Health</span>
+<span class="text-secondary font-bold">Optimal</span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[88%] rounded-full"></div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-xl">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-slate-500">Sleep Efficiency</span>
+<span class="text-primary font-bold">84%</span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[84%] rounded-full"></div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-xl">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-slate-500">Hydration Levels</span>
+<span class="text-on-primary-container font-bold">Normal</span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[72%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-100">
+<button class="w-full py-4 hero-gradient text-white rounded-full font-bold shadow-md hover:opacity-90 transition-opacity">
+                        View Detailed History
+                    </button>
+</div>
+</aside>
+</div>
+<!-- Lower Section: Genetic Markers & Family Roadmap -->
+<div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Genetic Markers Card -->
+<section class="bg-surface-container-lowest p-10 rounded-xl shadow-sm">
+<div class="flex items-center gap-4 mb-8">
+<div class="p-3 bg-tertiary-fixed text-tertiary rounded-full">
+<span class="material-symbols-outlined" data-icon="dna">genetics</span>
+</div>
+<h2 class="text-headline-md font-bold text-primary">Genetic Markers</h2>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-5 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary" data-icon="biotech">biotech</span>
+<div>
+<p class="font-bold text-on-surface">MTHFR Variant</p>
+<p class="text-xs text-slate-500">Shared by: You, Mom</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase rounded-full">Actionable</span>
+</div>
+<div class="flex items-center justify-between p-5 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="psychology">psychology</span>
+<div>
+<p class="font-bold text-on-surface">COMT Activity</p>
+<p class="text-xs text-slate-500">High efficiency cluster</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase rounded-full">Stable</span>
+</div>
+</div>
+</section>
+<!-- Family Roadmap Card -->
+<section class="bg-surface-container-lowest p-10 rounded-xl shadow-sm border border-slate-50">
+<div class="flex items-center gap-4 mb-8">
+<div class="p-3 bg-primary-fixed text-primary rounded-full">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+</div>
+<h2 class="text-headline-md font-bold text-primary">Family Roadmap</h2>
+</div>
+<div class="relative pl-8 border-l-2 border-primary-fixed ml-4 space-y-10">
+<div class="relative">
+<div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<p class="text-xs text-slate-500 font-bold">OCTOBER 2024</p>
+<p class="font-bold text-on-surface mt-1">Shared Wellness Retreat</p>
+<p class="text-sm text-on-surface-variant mt-1">Holistic screening &amp; nutrition workshop for all members.</p>
+</div>
+</div>
+<div class="relative opacity-60">
+<div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-primary-fixed border-4 border-white"></div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<p class="text-xs text-slate-500 font-bold">DECEMBER 2024</p>
+<p class="font-bold text-on-surface mt-1">Bi-Annual Labs Update</p>
+<p class="text-sm text-on-surface-variant mt-1">Synchronized blood panels for metabolic tracking.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full flex flex-col md:flex-row justify-between items-center px-16 py-12 bg-[#f7f9fd] dark:bg-[#0f172a] border-t border-slate-100 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 font-['Inter'] text-[0.6875rem] uppercase tracking-wider">
+            © 2024 MediPal. Medical Disclaimer.
+        </p>
+<div class="flex gap-8 mt-6 md:mt-0">
+<a class="text-slate-400 dark:text-slate-500 hover:text-[#004d6a] transition-colors font-['Inter'] text-[0.6875rem] uppercase tracking-wider" href="#">Medical Disclaimer</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-[#004d6a] transition-colors font-['Inter'] text-[0.6875rem] uppercase tracking-wider" href="#">Privacy Policy</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-[#004d6a] transition-colors font-['Inter'] text-[0.6875rem] uppercase tracking-wider" href="#">Terms of Service</a>
+</div>
+</footer>
+</body></html>
